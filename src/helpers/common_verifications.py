@@ -8,10 +8,10 @@ def verify_response_key(key, expected_data):
 
 def verify_json_key_not_null(key):
     assert key != 0, "Failed - Key is not empty" + key
-    assert key > 0
+    assert key > 0, "Failed Key is greater than zero"
 
 def verify_json_token_not_null(token):
     assert token != 0, "Failed, Key is not null" + token
 
 def verify_header_content_type_not_null(content_type):
-    assert content_type != 0
+    assert content_type != 0, "Content_Type is Not equal to null"

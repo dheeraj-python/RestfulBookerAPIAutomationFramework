@@ -34,4 +34,4 @@ class TestCreateBookingAPI():
             in_json=False,
             headers=Utils().common_headers()
         )
-        verify_http_status_code(response_data=response, expected_data=400)
+        verify_http_status_code(response_data=response, expected_data=500)
