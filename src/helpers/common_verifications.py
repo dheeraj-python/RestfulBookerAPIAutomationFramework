@@ -7,7 +7,7 @@ def verify_response_key(key, expected_data):
     assert key == expected_data
 
 def verify_json_key_not_null(key):
-    assert key != 0
+    assert key != 0, "Failed - Key is not empty" + key
     assert key > 0
 
 def verify_json_token_not_null(token):

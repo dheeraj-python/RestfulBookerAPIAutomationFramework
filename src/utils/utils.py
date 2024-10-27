@@ -20,3 +20,12 @@ class Utils(object):
             "Cookie": "token=" + str(token),
         }
         return headers
+
+    def read_csv_file(self):
+        pass
+
+    def read_env_file(self):
+        pass
+
+    def read_database(self):
+        pass
