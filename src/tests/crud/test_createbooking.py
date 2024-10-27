@@ -9,12 +9,15 @@ from src.constants.api_constants import APIConstants
 from src.helpers.payload_manager import payload_create_booking
 from src.helpers.common_verifications import *
 from src.utils.utils import Utils
+import logging
 
 
 class TestCreateBookingAPI():
 
     @allure.title("Verify that new unique Booking should be created")
     def test_create_booking_positive(self):
+        LOGGER = logging.getLogger(__name__)
+        LOGGER.info("Starting the Testcase - TC1 - positive")
         response = post_request(
             url=APIConstants().url_create_booking(),
             auth=None,
@@ -24,6 +27,8 @@ class TestCreateBookingAPI():
         )
         verify_http_status_code(response_data=response, expected_data=200)
         verify_json_key_not_null(response.json()["bookingid"])
+        LOGGER.info(response.json()["bookingid"])
+        LOGGER.info("End of the Testcase TC1 -positive")
 
     @allure.title("Verify the negative test case")
     def test_create_booking_negative(self):
