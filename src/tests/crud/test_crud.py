@@ -12,21 +12,23 @@ from src.utils.utils import Utils
 
 import allure
 import pytest
+import json
 
 
-class testCrud(object):
+class TestCrud(object):
 
     @allure.title("Test CRUD Operation")
     def test_update_booking_id(self, create_token, get_booking_id):
-        token = create_token
+
         put_url = APIConstants.url_patch_put_del(booking_id=get_booking_id)
+
         response = put_request(
             url=put_url,
-            headers=Utils.common_headers_put_patch_delete_cookie(token=token),
-            payload=payload_create_booking(),
+            headers=Utils().common_headers_put_patch_delete_cookie(token=create_token),
+            payload=payload_update_booking(),
             auth=None,
             in_json=False
         )
         verify_http_status_code(response_data=response, expected_data=200)
-        verify_response_key(response.json()["firstname"], expected_data="Jim")
-        verify_response_key(response.json()["totalprice"], expected_data=111)
+        verify_response_key(response.json()["firstname"], "Neha")
+        verify_response_key(response.json()["totalprice"], expected_data=101)
